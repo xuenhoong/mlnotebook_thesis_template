@@ -4,9 +4,12 @@
 \parskip = 2\baselineskip
 \usepackage[parfill]{parskip}
 
-\usepackage{enumitem}
-\usepackage[pdftex,dvipsnames]{xcolor}
+\usepackage[inline]{enumitem}
+\usepackage[pdftex,dvipsnames,table]{xcolor}
 \usepackage{textcomp}
+
+\usepackage{subcaption} % For subfigures to work
+\usepackage{pdflscape} % For landscape pages
 
 \input{meta/contents} % Tables of Content
 \input{meta/tables_figures} % Tables, Figures and Captions Packages
@@ -28,7 +31,11 @@
 \newcommand{\aboveparrule}{\leavevmode\rule{0.9\textwidth}{0.15ex}}
 \newcommand{\sectionbreak}{\clearpage}
 
-\usepackage{blindtext} % For this template only (cam be safely removed)
+\usepackage{blindtext} % For this template only (can be safely removed)
+
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % Centering of tabular tables when width specified
+\newcommand{\colouredtext}[2]{\textcolor{#1}{#2}} % Create coloured text
+\newcommand{\inlineListLabel}{\textit{\roman*~--}} % Specify inline list labels
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN DOCUMENT %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
