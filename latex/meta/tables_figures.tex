@@ -37,6 +37,46 @@
   \end{originaltable}
 }
 
+% Create a new longtable environment
+\let\originallongtable=\longtable
+\let\endoriginallongtable=\endlongtable
+\renewenvironment{longtable}[1][]
+{
+  \vspace{5mm}
+  \begin{mdframed}
+    [linecolor=Blue,
+    linewidth=1pt,
+    backgroundcolor=black!4,
+    innertopmargin=-0.5mm,
+    innerbottommargin=3mm]
+    \begin{originallongtable}[#1]
+}
+{
+    \end{originallongtable}
+  \end{mdframed}
+}
+
+% Create new toprule (to be used with longtable)
+\newcommand{\toprulec}{
+  \arrayrulecolor{black}\specialrule{0.1em}{\abovetopsep}{0pt}%
+  \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}%
+  }
+
+% Create new midrule (to be used with longtable)
+\newcommand{\midrulec}{
+  \arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}\specialrule{\lightrulewidth}{0pt}{0pt}%
+  \arrayrulecolor{white}\specialrule{\belowrulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}%
+  }
+
+  % Create new bottomrule (to be used with longtable)
+\newcommand{\bottomrulec}{
+  \arrayrulecolor{white}\specialrule{\aboverulesep}{0pt}{0pt}%
+  \arrayrulecolor{black}\specialrule{0.1em}{\belowbottomsep}{0pt}%
+  \arrayrulecolor{black}%
+  }
 
 \usepackage[labelfont=bf]{caption}
 \usepackage{tabularx}
