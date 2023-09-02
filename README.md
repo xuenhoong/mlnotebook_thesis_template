@@ -40,6 +40,44 @@ New page at each Section:
 Caption title and description (title also appears in Table of Contents):
 * `\newcommand*\mycaption[2]{\caption[#1]{\textbf{#1} #2}}`
 
+## Longtable usage notes
+
+* Issues/bugs/to-dos:
+    * Column headers doesn't seem to be wrap onto the next page 
+* Since captions in long tables are treated as rows, turn off row colours before, and turned it on again after
+* Use with `\toprulec`, `\midrulec`, or `\bottomrulec` (instead of the normal `\toprule`, `\midrule`, or `\bottomrule`)
+* Need to set `\rowcolors{1}{white}{white}` in the beginning, else alternate now will not have a background colour
+
+Example:
+```latex
+% Long table example adapted from https://www.overleaf.com/latex/examples/a-longtable-example/xxwzfxkxxjmc
+% Kept only the first header, as the others doesn't render correctly.
+
+\rowcolors{1}{white}{white} % No alternate colours in the rows
+
+\begin{longtable}{|l|l|l|}
+  % Hide row colours for caption rows
+  \hiderowcolors
+  \mycaption{A sample long table.} \label{tab:long} \\
+  \showrowcolors
+  % Start of the first table
+  \toprulec 
+  \multicolumn{1}{|c|}{First column} 
+    & \multicolumn{1}{c|}{Second column} 
+    & \multicolumn{1}{c|}{Third column} \\ 
+  \midrulec 
+  \endfirsthead
+
+  One & abcdef ghjijklmn & 123.456778 \\
+  \midrulec % <- remove if lines between lines aren't needed
+  One & abcdef ghjijklmn & 123.456778 \\
+  ...
+  ...
+  ...
+  \bottomrulec % <- manually add a bottom rule
+\end{longtable}
+```
+
 ## Preview
 
 <table style="vertical-align: top;">
